@@ -41,7 +41,7 @@ class SupportedVersionRangeAstVisitor extends AbstractAstVisitor {
     @Override
     void visitMethodCallExpression(MethodCallExpression methodCallExpression) {
         def methodName = ((ConstantExpression) methodCallExpression.getMethod()).getValue()
-        if (methodName == 'minSdkVersion' || methodName == 'targetSdkVersion') {
+        if (methodName == 'minSdkVersion' || methodName == 'targetSdkVersion') { //TODO : minSdk and targetSdk must be supported too
             def arguments = AstUtil.getArgumentsValue(methodCallExpression.getArguments())
             if (arguments.size() == 1) {
                 rule[methodName] = arguments.get(0)
